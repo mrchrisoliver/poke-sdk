@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mrchrisoliver\Package\Resources;
 
 use Saloon\Http\Connector;
