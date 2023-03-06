@@ -1,19 +1,23 @@
 <?php
 
-namespace mrchrisoliver\Package\DataObjects;
+declare(strict_types=1);
 
-use Saloon\Contracts\Response;
+namespace mrchrisoliver\Package\DataObjects;
 
 final class Pokemon
 {
     public function __construct(
-        public array $data
-    )
-    {}
+        public string $name,
+        public string $url
+    ) {
+    }
 
-    public static function fromResponse(Response $response): self
+    /**
+     *
+     * @param array<string> $data
+     */
+    public static function fromResponse(array $data): self
     {
-        $data = $response->json()['results'];
-        return new static($data);
+        return new static($data['name'], $data['url']);
     }
 }

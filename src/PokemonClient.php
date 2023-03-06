@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace mrchrisoliver\Package;
 
+use Saloon\Http\Connector;
+use Saloon\Contracts\Response;
+use Illuminate\Support\Collection;
 use mrchrisoliver\Package\DataObjects\Pokemon;
 use mrchrisoliver\Package\Resources\PokemonResource;
-use Saloon\Contracts\Response;
-use Saloon\Http\Connector;
 
 final class PokemonClient extends Connector
 {
@@ -18,7 +19,11 @@ final class PokemonClient extends Connector
 
     public function createDtoFromResponse(Response $response): mixed
     {
-        return Pokemon::fromResponse($response);
+        $data = new Collection($response->json()['results']);
+
+        return $data->map(function ($item) {
+            return Pokemon::fromResponse($item);
+        });
     }
 
     public function pokemon(): PokemonResource
