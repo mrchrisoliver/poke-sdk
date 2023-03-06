@@ -1,9 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mrchrisoliver\Package\Requests\Pokemon;
 
-use mrchrisoliver\Package\Requests\PokéRequest;
 use Saloon\Enums\Method;
+use mrchrisoliver\Package\Requests\PokéRequest;
 
 class GetAllPokemonRequest extends PokéRequest
 {
@@ -11,6 +13,6 @@ class GetAllPokemonRequest extends PokéRequest
 
     public function resolveEndpoint(): string
     {
-        return "/";
+        return '/';
     }
 }
