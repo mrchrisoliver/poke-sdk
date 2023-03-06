@@ -5,9 +5,8 @@ use mrchrisoliver\Package\PokemonClient;
 it('can send a request to get all pokemon', function() {
     $client = new PokemonClient();
 
-    $allPokemon = $client->pokemon()->all()->object()->results;
-
+    $allPokemon = $client->pokemon()->all()->dto();
     expect($allPokemon)
-        ->toBeArray()
+        ->toBeObject()
         ->not->toBeEmpty();
 });
