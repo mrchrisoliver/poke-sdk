@@ -1,11 +1,13 @@
 <?php
 
+use mrchrisoliver\Package\PokemonClient;
+
 it('can send a request to get all pokemon', function() {
-    $client = new \mrchrisoliver\Package\PokemonClient();
+    $client = new PokemonClient();
 
-    $request = new \mrchrisoliver\Package\Requests\Pokemon\GetAllPokemonRequest();
+    $allPokemon = $client->pokemon()->all()->object()->results;
 
-    $response = $client->send($request);
-
-    dd($response);
+    expect($allPokemon)
+        ->toBeArray()
+        ->not->toBeEmpty();
 });
