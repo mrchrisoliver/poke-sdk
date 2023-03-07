@@ -15,7 +15,7 @@ it('can send a request to get all pokemon', function () {
     $client = new PokemonClient();
     $client->withMockClient($mockClient);
 
-    $allPokemon = $client->pokemon()->get(1)->dto();
+    $allPokemon = $client->pokemon()->get()->dto();
     expect($allPokemon)
         ->toBeObject()
         ->not->toBeEmpty();
