@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace mrchrisoliver\Package\Requests\Pokemon;
 
-use Illuminate\Support\Collection;
-use mrchrisoliver\Package\DataObjects\PokemonCollection;
-use Saloon\Contracts\Response;
 use Saloon\Enums\Method;
+use Saloon\Contracts\Response;
+use Illuminate\Support\Collection;
 use mrchrisoliver\Package\Requests\PokéRequest;
+use mrchrisoliver\Package\DataObjects\PokemonCollection;
 
 class GetAllPokemonRequest extends PokéRequest
 {

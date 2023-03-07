@@ -1,13 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mrchrisoliver\Package\Requests\Pokemon;
 
-use Illuminate\Support\Collection;
-use mrchrisoliver\Package\DataObjects\Pokemon;
-use mrchrisoliver\Package\DataObjects\PokemonCollection;
-use mrchrisoliver\Package\Requests\PokéRequest;
-use Saloon\Contracts\Response;
 use Saloon\Enums\Method;
+use Saloon\Contracts\Response;
+use mrchrisoliver\Package\DataObjects\Pokemon;
+use mrchrisoliver\Package\Requests\PokéRequest;
 
 class GetPokemonByIdRequest extends PokéRequest
 {
@@ -15,7 +15,8 @@ class GetPokemonByIdRequest extends PokéRequest
 
     public function __construct(
         public int $id
-    ){}
+    ) {
+    }
 
     public function resolveEndpoint(): string
     {
@@ -25,6 +26,7 @@ class GetPokemonByIdRequest extends PokéRequest
     public function createDtoFromResponse(Response $response): mixed
     {
         $data = $response->json();
+
         return Pokemon::fromResponse($data);
     }
 }

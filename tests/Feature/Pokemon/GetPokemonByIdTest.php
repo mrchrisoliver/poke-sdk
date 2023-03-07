@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use mrchrisoliver\Package\PokemonClient;
-use mrchrisoliver\Package\Requests\Pokemon\GetPokemonByIdRequest;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
+use mrchrisoliver\Package\PokemonClient;
+use mrchrisoliver\Package\Requests\Pokemon\GetPokemonByIdRequest;
 
 it('can send a request to get all pokemon', function () {
     $mockClient = new MockClient([
