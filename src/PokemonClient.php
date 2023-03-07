@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace mrchrisoliver\Package;
 
 use Saloon\Http\Connector;
-use Saloon\Contracts\Response;
-use Illuminate\Support\Collection;
-use mrchrisoliver\Package\DataObjects\PokemonCollection;
 use mrchrisoliver\Package\Resources\PokemonResource;
 
 final class PokemonClient extends Connector

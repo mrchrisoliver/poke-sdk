@@ -41,6 +41,7 @@ expect()->extend('toBeOne', function () {
 |
 */
 
-function loadFixture($file, $key) {
-    return json_decode(file_get_contents(__DIR__."/fixtures/{$file}.json"),true);
+function loadFixture($file, $key)
+{
+    return json_decode(file_get_contents(__DIR__."/fixtures/{$file}.json"), true);
 }
