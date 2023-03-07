@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace mrchrisoliver\Package\Exceptions;
 
-use Saloon\Exceptions\Request\RequestException;
 use Saloon\Http\Response;
+use Saloon\Exceptions\Request\RequestException;
 
 class PokemonRequestException extends RequestException
 {
