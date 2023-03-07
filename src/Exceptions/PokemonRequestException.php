@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mrchrisoliver\Package\Exceptions;
 
 use Saloon\Exceptions\Request\RequestException;
