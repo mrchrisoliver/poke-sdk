@@ -12,13 +12,11 @@ final class PokemonResponse extends Response implements PokemonResponseContract
     public  function toException(): PokemonRequestException
     {
         if($this->failed()) {
-            $body = $this->response->getBody()->getContents();
-
             return new PokemonRequestException(
                 response: $this,
-                message: $this->getGuzzleException()?->getMessage(),
-                code: $this->getGuzzleException()->getcode(),
-                previous: $this->getGuzzleException()
+                message: $this->body(),
+                code: $this->status(),
+                previous: $this->getSenderException()
             );
         }
 

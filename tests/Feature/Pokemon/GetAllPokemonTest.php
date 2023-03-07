@@ -19,26 +19,22 @@ it('can send a request to get all pokemon', function () {
     $client = new PokemonClient();
     $client->withMockClient($mockClient);
 
-
     $allPokemon = $client->pokemon()->all()->dto();
+
     expect($allPokemon)
         ->toBeObject()
         ->not->toBeEmpty();
 });
 
-it('can have exception', function () {
-
+it('can throw an exception', function () {
     $mockClient = new MockClient([
-        function (PendingRequest $request): MockResponse {
-            return MockResponse::make(['name' => 'Sam'], 200)->throw(new PokemonRequestException($request->resolveResponseClass()));
-        },
+        MockResponse::make([], 404)
     ]);
 
     $client = new PokemonClient();
     $client->withMockClient($mockClient);
 
+    $allPokemon = $client->pokemon()->all();
+    expect(fn() => $allPokemon->throw())->toThrow(PokemonRequestException::class);
 
-    $allPokemon = $client->pokemon()->all()->dto();
-
-    dd($allPokemon);
 });
