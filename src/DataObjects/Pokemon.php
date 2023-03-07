@@ -7,8 +7,10 @@ namespace mrchrisoliver\Package\DataObjects;
 final class Pokemon
 {
     public function __construct(
+        public int $id,
         public string $name,
-        public string $url
+        public int $baseExperience,
+        public bool $isDefault,
     ) {
     }
 
@@ -18,6 +20,11 @@ final class Pokemon
      */
     public static function fromResponse(array $data): self
     {
-        return new static($data['name'], $data['url']);
+        return new static(
+            id: $data['id'],
+            name: $data['name'],
+            baseExperience: $data['base_experience'],
+            isDefault: $data['is_default'],
+        );
     }
 }
