@@ -2,14 +2,12 @@
 
 declare(strict_types=1);
 
-use mrchrisoliver\Package\Exceptions\PokemonRequestException;
-use mrchrisoliver\Package\PokemonClient;
-use mrchrisoliver\Package\Requests\Pokemon\GetAllPokemonRequest;
+use Saloon\Http\PendingRequest;
 use Saloon\Http\Faking\MockClient;
 use Saloon\Http\Faking\MockResponse;
-use Saloon\Contracts\Request;
-use Saloon\Http\PendingRequest;
-
+use mrchrisoliver\Package\PokemonClient;
+use mrchrisoliver\Package\Exceptions\PokemonRequestException;
+use mrchrisoliver\Package\Requests\Pokemon\GetAllPokemonRequest;
 
 it('can send a request to get all pokemon', function () {
     $mockClient = new MockClient([
@@ -27,7 +25,6 @@ it('can send a request to get all pokemon', function () {
 });
 
 it('can have exception', function () {
-
     $mockClient = new MockClient([
         function (PendingRequest $request): MockResponse {
             return MockResponse::make(['name' => 'Sam'], 200)->throw(new PokemonRequestException($request->resolveResponseClass()));

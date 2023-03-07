@@ -1,17 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace mrchrisoliver\Package\Responses;
 
+use Saloon\Http\Response;
 use mrchrisoliver\Package\Contracts\PokemonResponseContract;
 use mrchrisoliver\Package\Exceptions\PokemonRequestException;
-use Saloon\Http\Response;
-use Throwable;
 
 final class PokemonResponse extends Response implements PokemonResponseContract
 {
-    public  function toException(): PokemonRequestException
+    public function toException(): PokemonRequestException
     {
-        if($this->failed()) {
+        if ($this->failed()) {
             $body = $this->response->getBody()->getContents();
 
             return new PokemonRequestException(
